@@ -1,0 +1,24 @@
+{
+  "name": "brou-scraper",
+  "version": "1.0.0",
+  "description": "API Rest que devuelve la ultima cotización de la moneda, la cual obtiene al hacer scraping desde la web del Banco Republica.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teslenk0/brou-scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Teslenk0/brou-scraper/issues"
+  },
+  "homepage": "https://github.com/Teslenk0/brou-scraper#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2"
+  }
+}
