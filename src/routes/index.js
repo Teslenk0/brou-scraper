@@ -3,7 +3,7 @@
 var express = require("express");
 var router = express.Router();
 
-const httpStatusCodes = require("../../cronjob/utils/http_status_codes");
+const httpStatusCodes = require("../utils/http_status_codes");
 
 const API_INFORMATION = {
   api: "BROU-scraper",

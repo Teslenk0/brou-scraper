@@ -7,7 +7,7 @@ const Currency = require("../models/Currency");
 
 //Get latest values
 function GetLatest(req, res) {
-  Currency.findOne({}, {}, { sort: { created_at: -1 } })
+  Currency.findOne({}, {}, { sort: { date: -1 } })
     .then(doc => {
       res.status(httpStatusCodes.OK).json(doc);
     })
