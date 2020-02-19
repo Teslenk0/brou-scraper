@@ -4,7 +4,7 @@
   "description": "API Rest que devuelve la ultima cotización de la moneda, la cual obtiene al hacer scraping desde la web del Banco Republica.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
