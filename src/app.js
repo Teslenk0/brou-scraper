@@ -23,8 +23,11 @@ const SaveLatestValues = require("./cronjob/cron");
 var app = express();
 db.connect();
 
-//Cronjob for checking values every 6 hours "0 */6 * * *"
-cron.schedule("0 */6 * * *", function() {
+//Run the first time
+SaveLatestValues();
+
+//Cronjob for checking values every 30 minutes
+cron.schedule("0 */30 * * * *", function() {
   console.log("Executing cron job to fetch new values");
   SaveLatestValues();
 });
