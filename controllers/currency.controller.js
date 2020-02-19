@@ -63,6 +63,8 @@ function GetByDate(req, res) {
         $lte: nextDate
       }
     })
+      .sort({ date: -1 })
+      .limit(1)
       .then(doc => {
         //console.log(doc);
 
