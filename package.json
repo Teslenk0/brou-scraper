@@ -4,6 +4,7 @@
   "description": "API Rest que devuelve la ultima cotización de la moneda, la cual obtiene al hacer scraping desde la web del Banco Republica.",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +19,16 @@
   },
   "homepage": "https://github.com/Teslenk0/brou-scraper#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.9.1",
+    "morgan": "~1.9.1",
+    "node-cron": "^2.0.3",
     "request": "^2.88.2"
   }
 }
