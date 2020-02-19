@@ -20,7 +20,7 @@ const dbConnectionString = "mongodb://localhost/" + dbName;
 
 module.exports = {
   connect: () =>
-    mongoose.connect(process.env.MONGODB_URI || dbConnectionString, {
+    mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     }),
