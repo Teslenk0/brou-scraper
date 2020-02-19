@@ -3,7 +3,7 @@
 //mongoose
 
 const mongoose = require("mongoose");
-
+require("dotenv").config();
 //some required sets
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
@@ -20,7 +20,7 @@ const dbConnectionString = "mongodb://localhost/" + dbName;
 
 module.exports = {
   connect: () =>
-    mongoose.connect(dbConnectionString, {
+    mongoose.connect(process.env.MONGODB_URI || dbConnectionString, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     }),
