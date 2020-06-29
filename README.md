@@ -11,7 +11,7 @@ Luego de haber agregado todos los valores y su correspondiente divisa en un obje
 ## Entrega de la informacion 
 
 El formato de respuesta utilizado por la API es JSON (Javascript Object Notation). La informacion es accesible mediante la siguiente URL
-**[https://currency.tesluygroup.com](https://currency.tesluygroup.com)**.
+**[http://brou-scraper.herokuapp.com/](https://currency.tesluygroup.com)**.
 
 ## Endpoints
 
