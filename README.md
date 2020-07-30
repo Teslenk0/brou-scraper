@@ -17,10 +17,10 @@ El formato de respuesta utilizado por la API es JSON (Javascript Object Notation
 
 Los endpoints definidos son los siguientes:
 
-* ### __/api/v1/currency/latest__
+* ### __/api/v1/latest__
    Este endpoint nos brinda la ultima cotizacion almacenada en la base de datos.
 
-* ### __/api/v1/currency/:fecha__
+* ### __/api/v1/:fecha__
    Este endpoint nos brinda la oportunidad de elegir la cotizacion segun la fecha. Devuelve la ultima obtenida para el dia brindado, el formato que debe cumplir la fecha que se pasa por parametro es el siguiente: **AAAA-MM-DD**
 
 *******************************************************************
