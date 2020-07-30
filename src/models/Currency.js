@@ -24,37 +24,37 @@ let CurrencySchema = new mongoose.Schema({
     index: true
   },
   USD: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   EBROU_USD: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   EUR: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   ARS: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   BRL: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   GBP: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   CHF: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   JPY: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   PYG: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   UNID_INDEX: {
-    type: [ValueSchema]
+    type: ValueSchema
   },
   ONZA_TROY: {
-    type: [ValueSchema]
+    type: ValueSchema
   }
 });
 
