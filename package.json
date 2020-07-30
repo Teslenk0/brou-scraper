@@ -1,6 +1,6 @@
 {
   "name": "brou-scraper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "API Rest que devuelve la ultima cotización de la moneda, la cual obtiene al hacer scraping desde la web del Banco Republica.",
   "main": "index.js",
   "scripts": {

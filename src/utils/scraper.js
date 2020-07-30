@@ -13,109 +13,113 @@ const scrapFrom = require("./urlToScrapFrom");
 const currencies = require("./currencies").CURRENCIES;
 
 const parseName = currencyName => {
-  switch (currencyName) {
-    case "Dólar":
-      return currencies.USD;
+    switch (currencyName) {
+        case "Dólar":
+            return currencies.USD;
 
-    case "Dólar eBROU":
-      return currencies.EBROU_USD;
+        case "Dólar eBROU":
+            return currencies.EBROU_USD;
 
-    case "Euro":
-      return currencies.EUR;
+        case "Euro":
+            return currencies.EUR;
 
-    case "Peso Argentino":
-      return currencies.ARS;
+        case "Peso Argentino":
+            return currencies.ARS;
 
-    case "Real":
-      return currencies.BRL;
+        case "Real":
+            return currencies.BRL;
 
-    case "Libra Esterlina":
-      return currencies.GBP;
+        case "Libra Esterlina":
+            return currencies.GBP;
 
-    case "Franco Suizo":
-      return currencies.CHF;
+        case "Franco Suizo":
+            return currencies.CHF;
 
-    case "Yen":
-      return currencies.JPY;
+        case "Yen":
+            return currencies.JPY;
 
-    case "Guaraní":
-      return currencies.PYG;
+        case "Guaraní":
+            return currencies.PYG;
 
-    case "Unidad Indexada":
-      return currencies.UNID_INDEX;
+        case "Unidad Indexada":
+            return currencies.UNID_INDEX;
 
-    case "Onza Troy De Oro":
-      return currencies.ONZA_TROY;
-  }
+        case "Onza Troy De Oro":
+            return currencies.ONZA_TROY;
+    }
 };
 
 //This function scrap the given URL,
 //Then @return a promise from where we can get the data
-module.exports = function() {
-  var name = "";
-  var results = {};
-  var data = {};
-  var counter = 0;
+module.exports = function () {
+    var name = "";
+    var results = {};
+    var data = {};
+    var counter = 0;
 
-  return axios
-    .get(scrapFrom.URL)
-    .then(response => {
-      const $ = cheerio.load(response.data);
+    return axios
+        .get(scrapFrom.URL)
+        .then(response => {
+            const $ = cheerio.load(response.data);
 
-      //Foreach tr in table body
-      $("tbody tr").each(function() {
-        //Finds all td and loop
-        $(this)
-          .find("td")
-          .each(function() {
-            if ($(this).find(".moneda").length) {
-              name = $(this)
-                .find(".moneda")
-                .text();
+            //Foreach tr in table body
+            $("tbody tr").each(function () {
+                //Finds all td and loop
+                $(this)
+                    .find("td")
+                    .each(function () {
+                        if ($(this).find(".moneda").length) {
+                            name = $(this)
+                                .find(".moneda")
+                                .text();
 
-              name = parseName(name);
+                            name = parseName(name);
 
-              results[name] = {};
+                            results[name] = {};
 
-              data = {};
-              counter = 0;
-            }
+                            data = {};
+                            counter = 0;
+                        }
 
-            if ($(this).find(".valor").length && name != "") {
-              counter++;
-              var aux = $(this)
-                .find(".valor")
-                .text();
+                        if ($(this).find(".valor").length && name != "") {
+                            counter++;
+                            var aux = $(this)
+                                .find(".valor")
+                                .text();
 
-              switch (counter) {
-                case 1:
-                  data["buy"] = aux;
-                  break;
+                            switch (counter) {
+                                case 1:
+                                    if (name !== "UNID_INDEX") {
+                                        data["buy"] = parseFloat(aux.replace(',', '.'));
+                                    } else {
+                                        data["buy"] = 0;
+                                    }
+                                    break;
 
-                case 2:
-                  data["sell"] = aux;
-                  break;
+                                case 2:
+                                    data["sell"] = parseFloat(aux.replace(',', '.'));
+                                    break;
 
-                // Commented because this data is not wanted
-                // uncomment if you want to retrieve this information
-                /*case 3:
-                data["arbitraje_compra"] = aux;
-                break;
-              case 4:
-                data["arbitraje_venta"] = aux;
-                break;*/
-              }
-            }
+                                // Commented because this data is not wanted
+                                // uncomment if you want to retrieve this information
+                                /*case 3:
+                                data["arbitraje_compra"] = aux;
+                                break;
+                              case 4:
+                                data["arbitraje_venta"] = aux;
+                                break;*/
+                            }
+                        }
 
-            if (counter == 4) {
-              if (name != "") {
-                results[name] = data;
-              }
-            }
-          });
-      });
+                        if (counter == 4) {
+                            if (name != "") {
+                                results[name] = data;
+                            }
+                        }
+                    });
+            });
 
-      return results;
-    })
-    .catch(error => console.log(error));
+            return results;
+        })
+        .catch(error => console.log(error));
 };

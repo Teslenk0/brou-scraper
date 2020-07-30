@@ -32,14 +32,14 @@ function ValidateDate(req, res, next) {
 // VALUES FOR THAT DAY
 //QUERY IN MONGO DB:
 /*db.getCollection("currencies").find(
-  { 
-    "date" : { 
-        "$gte" : ISODate("2020-02-19T00:00:00.000+0000"), 
+  {
+    "date" : {
+        "$gte" : ISODate("2020-02-19T00:00:00.000+0000"),
         "$lte" : ISODate("2020-02-20T00:00:00.000+0000")
     }
 }
 ).sort(
-{ 
+{
     "date" : -1.0
 }
 ).limit(1);*/
@@ -75,7 +75,7 @@ function GetByDate(req, res) {
     res.status(httpStatusCodes.BAD_REQUEST).json({
       error: "bad_request",
       status_code: httpStatusCodes.BAD_REQUEST,
-      message: "invalid date format, it must be in iso [YYYY-MM-DD]"
+      message: "Invalid date format, it must be in iso [YYYY-MM-DD]"
     });
   }
 }

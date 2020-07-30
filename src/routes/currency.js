@@ -8,7 +8,7 @@ var currencyController = require("../controllers/currency.controller");
 router.route("/latest").get(currencyController.GetLatest);
 
 router
-  .route("/:date")
-  .get(currencyController.ValidateDate, currencyController.GetByDate);
+    .route("/:date")
+    .get(currencyController.ValidateDate, currencyController.GetByDate);
 
 module.exports = router;
